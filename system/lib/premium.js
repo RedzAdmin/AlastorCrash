@@ -54,14 +54,34 @@ const checkPremiumUser = (userId, _dir) => {
     return _dir.some((user) => user.id === userId);
 };
 
-const expiredCheck = (conn, _dir) => {
+const expiredCheck = (conn, _dir = premium) => {  // FIXED: Added default value
     setInterval(() => {
-        _dir.forEach((user, index) => {
+        // FIXED: Check if _dir is defined and is an array
+        if (!_dir || !Array.isArray(_dir)) {
+            console.error("❌ ERROR: _dir is not an array in expiredCheck!");
+            return;
+        }
+        
+        // Create a copy to avoid modification during iteration
+        const dirCopy = [..._dir];
+        
+        dirCopy.forEach((user, index) => {
             if (Date.now() >= user.expired) {
                 console.log(`🔥 Premium expired: ${user.id}`);
-                _dir.splice(index, 1);
-                fs.writeFileSync("./system/database/premium.json", JSON.stringify(_dir, null, 2));
-                conn.sendMessage(user.id, { text: "Your premium has expired, please purchase again." });
+                // Find the actual index in the original array
+                const actualIndex = _dir.findIndex(u => u.id === user.id);
+                if (actualIndex !== -1) {
+                    _dir.splice(actualIndex, 1);
+                    try {
+                        fs.writeFileSync("./system/database/premium.json", JSON.stringify(_dir, null, 2));
+                        if (conn && user.id) {
+                            conn.sendMessage(user.id, { text: "Your premium has expired, please purchase again." })
+                                .catch(err => console.error("Error sending expiration message:", err));
+                        }
+                    } catch (error) {
+                        console.error("❌ Failed to save premium.json:", error);
+                    }
+                }
             }
         });
     }, 1000);

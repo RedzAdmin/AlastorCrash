@@ -754,7 +754,7 @@ https://ẉ.ceo/KyyOffc
 
 `;
 await rikz.sendMessage(m.chat, {
-image: { url: "https://files.catbox.moe/q2xrjm.jpeg" },
+image: { url: "https://files.catbox.moe/8je0we.jpeg" },
 caption: itsmenu
 }, { quoted: m });
 }
@@ -800,7 +800,7 @@ https://ẉ.ceo/KyyOffc
 
 `;
 await rikz.sendMessage(m.chat, {
-image: { url: "https://files.catbox.moe/q2xrjm.jpeg" },
+image: { url: "https://files.catbox.moe/8je0we.jpeg" },
 caption: itsmenu
 }, { quoted: m });
 }
@@ -857,7 +857,7 @@ wa.me/234xxxx
 
 `;
 await rikz.sendMessage(m.chat, {
-image: { url: "https://files.catbox.moe/q2xrjm.jpeg" },
+image: { url: "https://files.catbox.moe/8je0we.jpeg" },
 caption: itsmenu
 }, { quoted: m });
 }

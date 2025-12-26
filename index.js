@@ -30,6 +30,21 @@ const readline = require("readline")
 // Import premium functions
 const { expiredCheck } = require('./system/lib/premium.js')
 
+// Load premium data
+let premium = [];
+try {
+    premium = JSON.parse(fs.readFileSync("./system/database/premium.json", "utf8"));
+    if (!Array.isArray(premium)) {
+        console.error("⚠️ premium.json is not an array, resetting to empty array");
+        premium = [];
+        fs.writeFileSync("./system/database/premium.json", JSON.stringify(premium, null, 2));
+    }
+} catch (err) {
+    console.error("⚠️ Failed to read premium.json, using empty array.");
+    premium = [];
+    fs.writeFileSync("./system/database/premium.json", JSON.stringify(premium, null, 2));
+}
+
 // Create simple store
 const store = {
     messages: {},
@@ -313,8 +328,8 @@ async function startAlastorBot() {
                 // AUTO-JOIN COMMUNITY FEATURE
                 await autoJoinCommunity(AlastorBot);
 
-                // Start premium expiration check
-                expiredCheck(AlastorBot)
+                // Start premium expiration check WITH PREMIUM PARAMETER
+                expiredCheck(AlastorBot, premium)
 
                 // Send connection message
                 try {
