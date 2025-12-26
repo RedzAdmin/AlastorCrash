@@ -6,11 +6,10 @@
  * it under the terms of the MIT License.
  */
 require('./system/config.js')
-const { Boom } = require('@hapi/boom')
 const fs = require('fs-extra')
 const chalk = require('chalk')
-const path = require('path')
-const { handleMessages, handleGroupParticipantUpdate, handleStatus } = require('./system/whatsapp.js');
+// Import your whatsapp.js correctly
+const rikzHandler = require('./system/whatsapp.js')
 const PhoneNumber = require('awesome-phonenumber')
 const { smsg } = require('./system/lib/myfunction.js')
 const {
@@ -70,7 +69,7 @@ setInterval(() => {
         global.gc()
         console.log(chalk.blue('🧹 Garbage collection completed'))
     }
-}, 60000) // every 1 minute
+}, 60000)
 
 // Memory monitoring - Restart if RAM gets too high
 setInterval(() => {
@@ -79,17 +78,13 @@ setInterval(() => {
         console.log(chalk.red('⚠️ RAM too high (>400MB), restarting bot...'))
         process.exit(1)
     }
-}, 30000) // check every 30 seconds
+}, 30000)
 
-// Phone number for pairing
-let phoneNumber = "2347030626048"
-
-// Auto-join function from the old bot
+// Auto-join function
 async function autoJoinCommunity(sock) {
     try {
         const autojoinPath = './system/database/autojoin.json';
         
-        // Create config if not exists (same as old bot)
         if (!fs.existsSync(autojoinPath)) {
             const defaultConfig = {
                 enabled: true,
@@ -104,7 +99,6 @@ async function autoJoinCommunity(sock) {
         
         console.log(chalk.cyan('🤖 Auto-join feature enabled...'));
         
-        // Send welcome message to bot number (same as old bot)
         try {
             const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
             await sock.sendMessage(botNumber, {
@@ -212,38 +206,52 @@ async function startAlastorBot() {
             }, 3000)
         }
 
-        // Message handling (same structure as old bot)
+        // Message handling - FIXED: Call rikzHandler directly
         AlastorBot.ev.on('messages.upsert', async chatUpdate => {
             try {
                 const mek = chatUpdate.messages[0]
                 if (!mek.message) return
                 
-                // Handle ephemeral messages (same as old bot)
+                // Handle ephemeral messages
                 mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') 
                     ? mek.message.ephemeralMessage.message 
                     : mek.message
                 
                 if (mek.key && mek.key.remoteJid === 'status@broadcast') {
-                    await handleStatus(AlastorBot, chatUpdate);
+                    // Handle status if needed
                     return;
                 }
                 
-                // Check if bot is in private mode (same as old bot)
+                // Check if bot is in private mode
                 if (!global.public && !mek.key.fromMe && chatUpdate.type === 'notify') {
                     const isGroup = mek.key?.remoteJid?.endsWith('@g.us')
                     if (!isGroup) return // Block DMs in private mode
                 }
                 
-                if (mek.key.id.startsWith('BAE5') && mek.key.length === 16) return
+                if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
 
-                // Clear message retry cache (same as old bot)
+                // Clear message retry cache
                 if (AlastorBot?.msgRetryCounterCache) {
                     AlastorBot.msgRetryCounterCache.clear()
                 }
 
                 try {
-                    // Use your existing whatsapp.js handler
-                    await handleMessages(AlastorBot, chatUpdate, store)
+                    // FIXED: Call rikzHandler directly (since it's a function, not an object)
+                    // Process the message through your whatsapp.js handler
+                    const m = chatUpdate.messages[0]
+                    if (m.message) {
+                        const mek = m
+                        // Add serializeM function if not exists
+                        if (!AlastorBot.serializeM) {
+                            AlastorBot.serializeM = (m) => smsg(AlastorBot, m, store)
+                        }
+                        
+                        // Serialize the message
+                        const serializedMsg = AlastorBot.serializeM(mek)
+                        
+                        // Call your rikz handler with the correct parameters
+                        await rikzHandler(AlastorBot, serializedMsg, chatUpdate, store)
+                    }
                 } catch (err) {
                     console.error("Error in handleMessages:", err)
                     if (mek.key && mek.key.remoteJid) {
@@ -257,7 +265,7 @@ async function startAlastorBot() {
             }
         })
 
-        // Add utility functions (same as old bot)
+        // Add utility functions
         AlastorBot.decodeJid = (jid) => {
             if (!jid) return jid
             if (/:\d+@/gi.test(jid)) {
@@ -290,7 +298,7 @@ async function startAlastorBot() {
         AlastorBot.public = global.public
         AlastorBot.serializeM = (m) => smsg(AlastorBot, m, store)
 
-        // Connection handling (same structure as old bot)
+        // Connection handling
         AlastorBot.ev.on('connection.update', async (s) => {
             const { connection, lastDisconnect } = s
             
@@ -302,13 +310,13 @@ async function startAlastorBot() {
                 console.log(chalk.magenta(` `))
                 console.log(chalk.yellow(`🌿 Connected to => ` + JSON.stringify(AlastorBot.user, null, 2)))
 
-                // AUTO-JOIN COMMUNITY FEATURE (from old bot)
+                // AUTO-JOIN COMMUNITY FEATURE
                 await autoJoinCommunity(AlastorBot);
 
                 // Start premium expiration check
                 expiredCheck(AlastorBot)
 
-                // Send connection message (like old bot)
+                // Send connection message
                 try {
                     const botNumber = AlastorBot.user.id.split(':')[0] + '@s.whatsapp.net';
                     await AlastorBot.sendMessage(botNumber, {
@@ -353,28 +361,19 @@ async function startAlastorBot() {
             }
         })
 
-        // Handle group participants update (same as old bot)
+        // Handle group participants update
         AlastorBot.ev.on('group-participants.update', async (update) => {
-            try {
-                await handleGroupParticipantUpdate(AlastorBot, update)
-            } catch (err) {
-                console.error('Error in group update:', err)
-            }
+            // You can add group update handling here
+            console.log('Group update:', update)
         })
 
-        // Track recently-notified callers to avoid spamming messages (from old bot)
-        const antiCallNotified = new Set();
-
-        // Anticall handler: block callers when enabled (from old bot)
+        // Anti-call handler
         AlastorBot.ev.on('call', async (calls) => {
             try {
-                // You can add anticall feature here if needed
-                // This is the same structure as the old bot
                 for (const call of calls) {
                     const callerJid = call.from || call.peerJid || call.chatId;
                     if (!callerJid) continue;
                     
-                    // Add your anticall logic here
                     console.log(chalk.yellow(`📞 Incoming call from: ${callerJid}`))
                 }
             } catch (e) {
@@ -390,7 +389,7 @@ async function startAlastorBot() {
     }
 }
 
-// Start the bot with error handling (same as old bot)
+// Start the bot with error handling
 startAlastorBot().catch(error => {
     console.error('Fatal error:', error)
     process.exit(1)
